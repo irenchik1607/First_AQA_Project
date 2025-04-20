@@ -6,28 +6,35 @@ import demoqa_page.Selectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 
 public class TextBoxPage extends BasePage {
+
+    @FindBy(css=Selectors.TEXT_BOX_FULL_NAME)
     private WebElement fullNameInput;
+
+    @FindBy(css=Selectors.TEXT_BOX_EMAIL)
     private WebElement emailInput;
+
+    @FindBy(css=Selectors.TEXT_BOX_CURRENT_ADDRESS)
     private WebElement currentAddressTextArea;
+
+    @FindBy(css=Selectors.TEXT_BOX_PERMANENT_ADDRESS)
     private WebElement permanentAddressTextArea;
+
+    @FindBy(css=Selectors.TEXT_BOX_SUBMIT_BUTTON)
     private WebElement submitButton;
+
+    @FindBy(css=Selectors.TEXT_BOX_OUTPUT)
     private WebElement output;
 
-    private WebDriver driver;
 
     public TextBoxPage(WebDriver driver) {
-        this.fullNameInput = driver.findElement(By.cssSelector(Selectors.TEXT_BOX_FULL_NAME));
-        this.emailInput = driver.findElement(By.cssSelector(Selectors.TEXT_BOX_EMAIL));
-        this.currentAddressTextArea = driver.findElement(By.cssSelector(Selectors.TEXT_BOX_CURRENT_ADDRESS));
-        this.permanentAddressTextArea = driver.findElement(By.cssSelector(Selectors.TEXT_BOX_PERMANENT_ADDRESS));
-        this.submitButton = driver.findElement(By.cssSelector(Selectors.TEXT_BOX_SUBMIT_BUTTON));
-        this.output = driver.findElement(By.cssSelector(Selectors.TEXT_BOX_OUTPUT));
-        this.driver = driver;
+        super(driver);
     }
 
     public void fillFullNameInput(String value) {

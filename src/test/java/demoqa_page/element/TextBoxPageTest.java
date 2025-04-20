@@ -1,5 +1,6 @@
-package page.element;
+package demoqa_page.element;
 
+import demoqa_page.BasePageTest;
 import demoqa_page.elements.TextBoxPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,17 +9,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TextBoxPageTest {
+public class TextBoxPageTest extends BasePageTest {
 
     private TextBoxPage textBoxPage;
-    private WebDriver driver;
+
 
 
     @BeforeMethod
     public void setUp() {
-
-        driver = new ChromeDriver();
-        driver.manage().window().maximize(); // розгорнули сторінку до макс розміру
+        super.setUp();
         driver.get("https://demoqa.com/text-box");
         textBoxPage = new TextBoxPage(driver);
     }
@@ -26,7 +25,7 @@ public class TextBoxPageTest {
     @AfterMethod
     public void tearDown() {
         textBoxPage = null;// щоб попередня сторінка не потрапила в наступний тест (зануляємо)
-        driver.quit();
+        super.tearDown();
     }
 
     @Test
